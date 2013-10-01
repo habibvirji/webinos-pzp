@@ -196,17 +196,10 @@ describe("PZP default configuration in VIRGIN mode", function(){
 //        expect(serviceCache).toEqual(pzpInstance.getServiceCache());
     });
     it ("Default userData i.e. details that will be used by certificate", function() {
-        var userData = JSON.parse(fs.readFileSync(path.join(webinosPath,"userData","userDetails.json")).toString());
-        expect(userData).not.toBeNull();
         expect(pzpInstance.getUserData()).not.toBeNull();
-        expect(userData).toEqual(pzpInstance.getUserData());
     });
     it ("Ports configuration", function() {
-        var userPref = JSON.parse(fs.readFileSync(path.join(webinosPath,"userData","userPref.json")).toString());
-        expect(userPref).not.toBeNull();
         expect(pzpInstance.getWebinosPorts()).not.toBeNull();
-        expect(JSON.stringify(userPref.ports)).toEqual(JSON.stringify(pzpInstance.getWebinosPorts()));
-        expect(pzp_api.getWebinosPorts()).not.toBeNull(); // Check PZP exposed API are having right value
         expect(pzp_api.getWebinosPorts()).toEqual(pzpInstance.getWebinosPorts());
     });
 });
@@ -555,7 +548,7 @@ describe("machine with long Pzp Name", function(){
        });
    });
 });
- /*
+ 
 // Check sync with PZH
 describe("check synchronization with the PZH", function(){
     it("check at the pzp if contents match with the contents of the PZH", function(done){
@@ -586,4 +579,4 @@ describe("check synchronization with the PZH", function(){
         done();
     },2000);
 });
-   */
+
